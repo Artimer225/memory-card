@@ -2,13 +2,14 @@ import { useState } from 'react'
 import './App.css'
 import { initialCardCollection } from './components/CardCollection.js'
 import CardGrid from './components/CardGrid.jsx'
+import WinAward from "./components/Card.jsx";
 import './styles/card-grid.css'
 
 function App() {
     const [cardCollection, setCardCollection] = useState(initialCardCollection)
     const [score, setScore] = useState(0)
+    const [bestScore, setBestScore] = useState(0)
     const [clickedCards, setClickedCards] = useState([])
-    let bestScore = 0;
 
     function shuffleArray(array) {
         for (let i= array.length - 1; i > 0; i--) {
@@ -18,10 +19,15 @@ function App() {
         return array
     }
 
-    function onClick(e) {
-        const cardId = e.target.key
+    if (score >= 11) {
+        return <WinAward />
+    }
+
+    function onClick(cardId) {
+        console.log(cardId)
+        console.log(score)
         if (clickedCards.includes(cardId)) {
-            bestScore = score;
+            setBestScore(score > bestScore ? score : bestScore)
             setScore(0);
             setClickedCards([])
         } else {
@@ -30,6 +36,7 @@ function App() {
             )
             setScore(score+1)
         }
+        setCardCollection(shuffleArray(cardCollection))
     }
 
 
@@ -38,7 +45,6 @@ function App() {
       <div className="header">
         <div className="info">
           <h1>Chiikawa Memory Game</h1>
-          <br/>
           <p>Score 12 points by clicking on different cards! Try your best to not click on the same cards</p>
         </div>
           <div className="score">
@@ -46,7 +52,7 @@ function App() {
               <span>Your best score: {bestScore}</span>
           </div>
       </div>
-      <CardGrid cardCollection={cardCollection}/>
+      <CardGrid cardCollection={cardCollection} onClick={onClick}/>
     </>
   )
 }

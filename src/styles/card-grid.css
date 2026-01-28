@@ -25,6 +25,29 @@
     font-size: 20px;
 }
 
+.win-message {
+    display: flex;
+    flex-direction: column;
+    background-color: beige;
+    border: 2px solid burlywood;
+    border-radius: 5px;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 97vh;
+}
+
+.header {
+    text-align: center;
+    font-size: 25px;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+}
+
 .card:hover {
     cursor: pointer;
     -webkit-box-shadow:0px 0px 29px 4px rgba(2,80,153,0.9);

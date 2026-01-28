@@ -1,11 +1,9 @@
-export default function Card({ card }) {
+export default function WinAward() {
     return (
-        <div className={'card'} key={card.id}>
-            <img src={'src/images/' + card.img} alt={card.name}/>
-            <br/>
-            <span>
-                {card.name}
-            </span>
-        </div>
+        <dialog className={'win-message'}>
+            <h2>YOU HAVE WON! YOU ARE REALLY TUFF!</h2>
+            <img src={'src/images/winner.gif'} alt='rakko'/>
+            <p>please reload the page, i was too lazy to implement this</p>
+        </dialog>
     )
 }
