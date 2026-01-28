@@ -8,7 +8,7 @@ export default function CardGrid({ cardCollection, onClick}) {
                     id={card.id}
                     onClick={() => {onClick(card.id)}
                 }>
-                    <img src={'src/images/' + card.img} alt={card.name}/>
+                    <img src={'/images/' + card.img} alt={card.name}/>
                     <br/>
                     <span>
                         {card.name}
